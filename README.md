@@ -8,14 +8,15 @@ im new to pact and just now learning.
 if you like to add to this project, please do so.
 
 ---
-.pact Files:
+### .pact Files:
 
 The .pact files contain the source code of Pact smart contracts.
 They are written in the Pact programming language, which is a functional smart contract language designed specifically for blockchain applications.
 .pact files are typically created and edited using a text editor or an Integrated Development Environment (IDE).
 These files contain the contract logic, including the contract definition, functions, data types, and any associated code.
-.repl Files:
----
+
+### .repl Files:
+
 The .repl files are used for interacting with Pact contracts through the REPL (Read-Eval-Print Loop) environment.
 REPL is an interactive environment where you can execute Pact commands and interact with contracts deployed on a Pact server.
 .repl files contain a series of Pact commands that can be executed sequentially in the REPL.
