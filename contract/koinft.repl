@@ -1,0 +1,54 @@
+(load "KoiFishNFT.pact")
+
+(defdata account (read-keyset "account.pem"))
+
+(define-keyset 'account-keyset (read-keyset "account-keyset.pem"))
+
+(defcap mint-fish-capability 'account-keyset)
+
+(module-begin
+  (define-keyset 'admin-keyset (read-keyset "admin-keyset.pem"))
+
+  (begin-tx)
+  (step
+    (exec
+      (keyset-ref 'admin-keyset)
+      (create-table "account" account)
+    )
+  )
+  (commit-tx)
+
+  (begin-tx)
+  (step
+    (exec
+      (keyset-ref 'admin-keyset)
+      (create-table "koi-fish-nft" account)
+    )
+  )
+  (commit-tx)
+
+  (begin-tx)
+  (step
+    (exec
+      (keyset-ref 'account-keyset)
+      (mint-fish account "Koi Fish 1" "Red" 2)
+    )
+  )
+  (commit-tx)
+
+  (begin-tx)
+  (step
+    (exec
+      (keyset-ref 'account-keyset)
+      (mint-fish account "Koi Fish 2" "Blue" 3)
+    )
+  )
+  (commit-tx)
+
+  (begin-tx)
+  (query
+    (keyset-ref 'account-keyset)
+    (get-fish account)
+  )
+  (commit-tx)
+)
